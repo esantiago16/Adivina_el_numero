@@ -21,14 +21,14 @@ def mostrar_menu():
                         numero = int(input("Que numero es del 1 al 10 ?: "))
 
                         if numero == facil:
-                              print("Ganaste")
-                              break
-                        print(f"Ese no es, te quedan {dificultades[0]["intentos"]-1} intentos")
-                        dificultades[0]["intentos"] -=1
+                            print("Ganaste")
+                        else:
+                            print(f"Ese no es, te quedan {dificultades[0]["intentos"]-1} intentos")
+                            dificultades[0]["intentos"] -=1
 
                         if dificultades[0]["intentos"] < 1 :
-                            return "Perdiste"
-                break
+                            print("Perdiste")
+                
 
             if eleccion == "medio":
                 medio = random.randint(1,50)
@@ -36,14 +36,14 @@ def mostrar_menu():
                     numero = int(input("Que numero es del 1 al 50 ?: "))
 
                     if numero == medio:
-                            print("Ganaste")
-                            break
-                    print(f"Ese no es, te quedan {dificultades[1]["intentos"]-1} intentos")
-                    dificultades[1]["intentos"] -=1
+                        print("Ganaste")
+                    else:
+                        print(f"Ese no es, te quedan {dificultades[1]["intentos"]-1} intentos")
+                        dificultades[1]["intentos"] -=1
 
                     if dificultades[1]["intentos"] < 1 :
-                        return "Perdiste"
-                break
+                        print("Perdiste")
+                
 
             if eleccion == "dificil":
                 dificil = random.randint(1,100)    
@@ -52,14 +52,21 @@ def mostrar_menu():
             
                     if numero == dificil:
                         print("Ganaste")
-                        break
-                    print(f"Ese no es, te quedan {dificultades[2]["intentos"]-1} intentos")
-                    dificultades[2]["intentos"] -=1
+                    else:
+                        print(f"Ese no es, te quedan {dificultades[2]["intentos"]-1} intentos")
+                        dificultades[2]["intentos"] -=1
 
                     if dificultades[2]["intentos"] < 1 :
-                        return "Perdiste"
-                break
-            break
+                        print("Perdiste")
+                
+
+            print("Deseas volver a jugar?: ""\n","Deseas sair?: ")
+            eleccion_2 = str(input("Que deseas hacer: "))
+
+            if eleccion_2 == "salir":
+                return "Gracias por jugar"
+            else:
+                mostrar_menu()
 
 
 print(mostrar_menu())
