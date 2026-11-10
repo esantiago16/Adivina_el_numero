@@ -26,5 +26,3 @@ def pedir_reintento():
     reintento = input("Quieres volver a jugar o salir?: ").lower().strip()
     return reintento
 
-def validar_pedir_reintento(reintento):
-    return reintento in ["jugar", "salir"]

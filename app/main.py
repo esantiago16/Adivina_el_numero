@@ -8,7 +8,6 @@ from validaciones import (
         pedir_reintento,
         validar_pedir_eleccion,
         validar_pedir_numero,
-        validar_pedir_reintento,
 )
 
 
@@ -39,7 +38,7 @@ def mostrar_menu():
                             intentos -=1
 
                         if intentos < 1 :   
-                            print("Ya no tienes mas intentos")
+                            print("Perdiste,ya no tienes mas intentos")
                 
 
                 if eleccion == "medio":
@@ -59,7 +58,7 @@ def mostrar_menu():
                             intentos-=1
 
                         if intentos < 1 :
-                            print("Perdiste")
+                            print("Perdiste,ya no tienes mas intentos")
                 
 
                 if eleccion == "dificil":
@@ -79,19 +78,21 @@ def mostrar_menu():
                             intentos -=1
 
                         if intentos < 1 :
-                            print("Perdiste")
+                            print("Perdiste,ya no tienes mas intentos")
                 
 
                 eleccion_2 =pedir_reintento()
-                if not validar_pedir_reintento(eleccion_2):
-                    print("Esa opcion no existe, vuelve a elegir")    
+                while eleccion_2 not in ["jugar", "salir"]:
+                    print("Esa opcion no existe, vuelve a elegir")
+                    eleccion_2 = pedir_reintento()
                 if eleccion_2 == "jugar":
                     continue
-                else:
-                    print("Gracias por jugar")
-                    break
-
+                if eleccion_2 == "salir":
+                        print("Gracias por jugar, hasta la proxima")
+                        return
 mostrar_menu()    
+
+
 
 
 
