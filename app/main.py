@@ -31,9 +31,8 @@ def mostrar_menu():
                 if eleccion_2 == "salir":
                         print("Gracias por jugar, hasta la proxima")
                         return
-mostrar_menu()    
 
-
-
+if __name__ == "__main__":
+    mostrar_menu()
 
 
