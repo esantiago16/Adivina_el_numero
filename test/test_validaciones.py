@@ -31,7 +31,7 @@ def test_validar_pedir_reintento_strip(monkeypatch):
     monkeypatch.setattr(validaciones,"input",lambda devolver_si:" SI ",raising=False)
 
     #When : Se pide el nuevo intento
-    resultado = pedir_reintento()
+    resultado = validaciones.pedir_reintento()
 
     #Then: La entrada llega sin espacios y en miniscula 
     assert resultado == "si"
@@ -42,7 +42,7 @@ def test_validar_pedir_reintento_lower(monkeypatch):
     monkeypatch.setattr(validaciones,"input", lambda devolver_no: "No",raising=False)
 
     #When : Se pide el nuevo intento
-    re_final = pedir_reintento()
+    re_final = validaciones.pedir_reintento()
 
     #Then: La entrada llega toda en miniscula 
     assert re_final == "no"
