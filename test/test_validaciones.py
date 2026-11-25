@@ -27,22 +27,22 @@ def test_validar_pedir_numero_fuera_rango_superior():
 
 def test_validar_pedir_reintento_strip(monkeypatch):
     
-    def devolver_si(mensaje):
-        return " SI "
-    
-    monkeypatch.setattr(validaciones,"input",devolver_si, raising=False)
+    #Given : El usuario envia una palabra con espacios y mayusculas
+    monkeypatch.setattr(validaciones,"input",lambda devolver_si:" SI ",raising=False)
 
-    resultado = validaciones.pedir_reintento()
+    #When : Se pide el nuevo intento
+    resultado = pedir_reintento()
 
+    #Then: La entrada llega sin espacios y en miniscula 
     assert resultado == "si"
 
 def test_validar_pedir_reintento_lower(monkeypatch):
+    
+    #Given : El usuario envia una palabra la primera letra en mayuscula
+    monkeypatch.setattr(validaciones,"input", lambda devolver_no: "No",raising=False)
 
-    def devolver_no(mensaje):
-        return "No"
-
-    monkeypatch.setattr(validaciones,"input",devolver_no,raising=False)
-
+    #When : Se pide el nuevo intento
     re_final = pedir_reintento()
 
+    #Then: La entrada llega toda en miniscula 
     assert re_final == "no"
